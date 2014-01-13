@@ -29,12 +29,56 @@ Meteor.methods({
 
 		// NOTE: injection-prevention type thing below
 		// pick out the whitelisted keys
-		var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'), {
+		// var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'), {
+		// 	userId: user._id,
+		// 	author: user.username,
+		// 	submitted: new Date().getTime()
+		// });
+
+		var post = _.extend(_.pick(postAttributes, 'url', 'message'), {
+			title: postAttributes.title + (this.isSimulation ? '(client)' : '(server)'),
 			userId: user._id,
 			author: user.username,
 			submitted: new Date().getTime()
 		});
+
+		// wait for 5 seconds
+		if (! this.isSimulation) {
+			var Future = Npm.require('fibers/future');
+			var future = new Future();
+			Meteor.setTimeout(function() {
+				future.return();
+			}, 5 * 1000);
+			future.wait();
+		}
+
 		var postId = Posts.insert(post);
 		return postId;
 	}
 });
+
+
+// Meteor.methods({
+// 	post: function(postAttributes) {
+// // […]
+// // pick out the whitelisted keys
+// var post = _.extend(_.pick(postAttributes, 'url', 'message'), {
+// 	title: postAttributes.title + (this.isSimulation ? '(client)' : '(serve
+// 		r)'),
+// 	userId: user._id,
+// 	author: user.username,
+// 	submitted: new Date().getTime()
+// });
+// // wait for 5 seconds
+// if (! this.isSimulation) {
+// 	var Future = Npm.require('fibers/future');
+// 	var future = new Future();
+// 	Meteor.setTimeout(function() {
+// 		future.return();
+// 	}, 5 * 1000);
+// 	future.wait();
+// }
+// var postId = Posts.insert(post);
+// return postId;
+// }
+// });
