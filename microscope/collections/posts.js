@@ -1,11 +1,10 @@
 // note: no `var` here means this variable is available everywhere
 Posts = new Meteor.Collection('posts');
 
-// Posts.allow({
-// 	insert: function(userId, doc) {
-// 		return !! userId;
-// 	}
-// });
+Posts.allow({
+	update: ownsDocument,
+	remove: ownsDocument
+});
 
 // QUESTION: i don't need lines 4-8 right? 
 // QUESTION: before adding this server-side code, a baddie could 
