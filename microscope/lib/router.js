@@ -12,4 +12,8 @@ Router.map(function() {
 		// below sets up the "Data Context" for the postPage template
 		data: function() { return Posts.findOne(this.params._id); }
 	});
+
+	this.route('postSubmit', {
+		path: '/submit'
+	});
 });
