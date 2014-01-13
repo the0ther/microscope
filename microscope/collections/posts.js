@@ -6,6 +6,13 @@ Posts.allow({
 	remove: ownsDocument
 });
 
+Posts.deny({
+	update: function(userId, post, fieldNames) {
+		// may only edit the following two fields:
+		return (_.without(fieldNames, 'url', 'title').length > 0);
+	}
+});
+
 // QUESTION: i don't need lines 4-8 right? 
 // QUESTION: before adding this server-side code, a baddie could 
 // have defeated client-side checking by crafting a userId client-side??
