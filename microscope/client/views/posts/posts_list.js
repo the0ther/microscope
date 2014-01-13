@@ -5,6 +5,6 @@ The code below is a demonstration of Meteor's "reactivity".
 */
 Template.postsList.helpers({
 	posts: function() {
-		return Posts.find();
+		return Posts.find({}, {sort: {submitted: -1}});
 	}
 });
