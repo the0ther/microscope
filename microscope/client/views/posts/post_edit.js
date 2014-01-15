@@ -1,13 +1,8 @@
-Template.postEdit.helpers({
-	post: function() {
-		return Posts.findOne(Session.get('currentPostId'));
-	}
-});
-
 Template.postEdit.events({
 	'submit form': function(e) {
 		e.preventDefault();
-		var currentPostId = Session.get('currentPostId');
+		console.log('this._id: ', this._id);
+		var currentPostId = this._id;
 
 		var postProperties = {
 			url: $(e.target).find('[name=url]').val(),
