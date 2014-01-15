@@ -1,4 +1,4 @@
-// note: no `var` here means this variable is available everywhere
+// note: no `var` here means this variable is available everywhere 
 Posts = new Meteor.Collection('posts');
 
 Posts.allow({
@@ -13,13 +13,10 @@ Posts.deny({
   }
 });
 
-// QUESTION: i don't need lines 4-8 right? 
-// QUESTION: before adding this server-side code, a baddie could 
-// have defeated client-side checking by crafting a userId client-side??
 Meteor.methods({
   post: function(postAttributes) {
     var user = Meteor.user(),
-      postWithSameLink = Posts.findOne({url: postAttributes.url});
+    postWithSameLink = Posts.findOne({url: postAttributes.url});
     
     // ensure the user is logged in
     if (!user)
