@@ -11,11 +11,21 @@ Template - A bit of html/javascript which is specified using a `<template>` tag.
 
 Helpers - These are functions/code associated with a Template.
 
+Simulation - This is the means by which MeteorJS reduces apparent latency.
+
+
 
 ## Meteor naming-conventions
 
 
+## Access Control and the Database
 
+This can be achieved in one of two ways
+
+1) Allow/deny callbacks
+2) Allow/deny configuration
+
+The flow of these permissions is fairly straightforward. The best explanation I have seen is shown in [this diagram](https://dl.dropboxusercontent.com/u/21643387/img/MeteorJS%20Allow%3ADeny%20Chart.png).
 
 
 
