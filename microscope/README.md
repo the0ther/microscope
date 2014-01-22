@@ -18,6 +18,23 @@ Simulation - This is the means by which MeteorJS reduces apparent latency.
 ## Meteor naming-conventions
 
 
+## Metorite Packages
+
+There is a package manager for MeteorJS it is known as Meteorite. The main commands for working with Meteorite include `mrt add` and `mrt remove`. One can see a list of available packages by typing `meteor list` in the terminal.
+
+Useful Meteorite packages include the following:
+
+* accounts-base
+* bootstrap3-sass
+* coffeescript
+* d3
+* email
+* http
+* jquery
+* scss
+* underscore
+
+
 ## Access Control and the Database
 
 This can be achieved in one of two ways
